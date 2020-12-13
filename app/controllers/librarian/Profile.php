@@ -170,6 +170,7 @@ class Profile extends Controller {
         $_SESSION['user_id'] = $user->id;
         $_SESSION['username'] = $user->username;
         $_SESSION['email'] = $user->email;
+        $_SESSION['role'] = 'librarian';
         
         header('location:' . URLROOT . '/librarian/index');
     }
@@ -180,6 +181,9 @@ class Profile extends Controller {
         unset($_SESSION['email']);
         header('location:' . URLROOT . '/librarian/profile/librarian_login');
     }
+
+
+
     public function update($id){
 
         $info = $this->librarianModel->getInfo($id);
@@ -205,10 +209,7 @@ class Profile extends Controller {
                 'info' => $info,
                 'firstname'=> ($_POST["firstname"]),
                 'lastname'=> ($_POST["lastname"]),
-                
                 'email'=> ($_POST["email"]),
-                
-               
                 'address'=> ($_POST["address"]),
                 
                 

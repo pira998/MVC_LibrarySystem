@@ -87,6 +87,13 @@
                             <p>Message</p>
                         </a>
                     </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/librarian/book_requests">
+                            <i class="material-icons">send</i>
+                            <p>Book Requests</p>
+                        </a>
+                    </li>
                     <!-- <li class="nav-item ">
                         <a class="nav-link" href="../views/student_report.php">
                             <i class="material-icons">report</i>

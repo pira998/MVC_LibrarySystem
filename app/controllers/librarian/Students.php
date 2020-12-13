@@ -61,10 +61,54 @@ class Students extends Controller {
 
         
     }
-    public function update(){
+    public function update($id){
+        $info = $this->studentModel->getInfo($id);
+
+        $data = [
+            'info' => $info,
+            'id' => '',
+            'firstname'=> '',
+            'lastname'=> '',
+            'username'=> '',
+            'email'=> '',
+            'address'=> '',
+        
+        ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'id' => $id,
+                'info' => $info,
+                'firstname'=> ($_POST["firstname"]),
+                'lastname'=> ($_POST["lastname"]),
+                'email'=> ($_POST["email"]),
+                'address'=> ($_POST["address"]),
+               
+                
+                
+            ];
+
+           
+            if ($this->studentModel->updateProfile($data)) {
+                $info = $this->studentModel->getInfo($id);
+                $data = [
+                    'info' => $info,                   
+                ];
+                $this->view('librarian/students/update',$data);
+                
+            } else {
+                die("Something went wrong, please try again!");
+            }
+        }
+
+        $this->view('librarian/students/update', $data);;
         
 
     }
+
+   
 
 
     public function approve($id){

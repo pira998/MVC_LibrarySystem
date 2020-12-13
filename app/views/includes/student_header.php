@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +6,6 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/public/assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="/public/assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <script src="jquery-3.5.1.min.js"></script>
     <title>
         LIBO
     </title>
@@ -16,21 +14,16 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
-    <link href="/public/assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="/public/assets/demo/demo.css" rel="stylesheet" />
+   
+    <link href="/public/assets/css/material-dashboard.css" rel="stylesheet"/>
+
 
     <link rel="stylesheet" href="/public/assets/css/card.css" />
     <link rel="stylesheet/less" type="text/css" href="/public/assets/scss/card.less" />
     <link rel="stylesheet" href="/public/assets/css/table.css">
     <link rel="stylesheet" href="/public/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 </head>
+
 
 <body class="">
     <?php
@@ -54,13 +47,13 @@
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="nav-item active  ">
-                        <a class="nav-link" href="/student/pages">
+                        <a class="nav-link" href="/student/index">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="/student/profile">
+                        <a class="nav-link" href="/student/profile/<?php echo $_SESSION['user_id'];?>">
                             <i class="material-icons">person</i>
                             <p>Student Profile</p>
                         </a>
@@ -72,7 +65,7 @@
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="/student/borrowed_books">
+                        <a class="nav-link" href="/student/borrowed_books/index/<?php echo $_SESSION['user_id'];?>">
                             <i class="material-icons">library_books</i>
                             <p>Borrowed book</p>
                         </a>
@@ -95,7 +88,6 @@
             </div>
         </div>
         <div class="main-panel">
-            <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
@@ -108,24 +100,9 @@
                         <span class="navbar-toggler-icon icon-bar"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end">
-                        <form class="navbar-form">
-                            <div class="input-group no-border">
-                                <input type="text" value="" class="form-control" placeholder="Search...">
-                                <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                    <i class="material-icons">search</i>
-                                    <div class="ripple-container"></div>
-                                </button>
-                            </div>
-                        </form>
+
                         <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="javascript:;">
-                                    <i class="material-icons">dashboard</i>
-                                    <p class="d-lg-none d-md-block">
-                                        Stats
-                                    </p>
-                                </a>
-                            </li>
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">notifications</i>
@@ -143,17 +120,17 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     <i class="material-icons">person</i>
                                     <p class="d-lg-none d-md-block">
                                         Account
                                     </p>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                    <a class="dropdown-item" href="#">Profile</a>
+                                    <a class="dropdown-item" href="#"><?php echo $_SESSION['username']; ?></a>
                                     <a class="dropdown-item" href="#">Settings</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/student/users/logout">Log out</a>
+                                    <a class="dropdown-item" href="/student/profile/logout">Log out</a>
                                 </div>
                             </li>
                         </ul>

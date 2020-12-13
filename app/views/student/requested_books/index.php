@@ -32,17 +32,17 @@ require APPROOT . '/views/includes/student_header.php';
                                         <tbody>
 
                                         <tr>
-                                        <?php while ($m = mysqli_fetch_array($array)) :
+                                        <?php foreach($data['requestedBooks'] as $requestedBook):
                                             ?>
 
-                                            <td><?php echo $m['book_id'] ;?></td>
-                                            <td><?php echo date('d/m/Y ', $m['requested_time']) ?></td>
+                                            <td><?php echo $requestedBook->book_id ;?></td>
+                                            <td><?php echo date('d/m/Y ', $requestedBook->requested_time) ;?></td>
 
-                                            <td><a href="cancel.php?id=<?php echo $m[0]; ?>"><button class="btn btn-danger">Cancel</button></a>
+                                            <td><a href="/student/requested_books/cancel/<?php echo $requestedBook->id; ?>"><button class="btn btn-danger">Cancel</button></a>
                                             </td>
 
                                         </tr>
-                                        <?php endwhile; ?>
+                                        <?php endforeach ?>
 
 
                                         </tbody>

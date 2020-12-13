@@ -9,8 +9,7 @@ class Book {
         $this->db->query('SELECT * FROM books_details WHERE id= :id');
         $this->db->bind(':id', $id);
 
-        $this->db->bind(':id', $id);
-
+     
         $row = $this->db->single();
 
         return $row;
@@ -120,6 +119,8 @@ class Book {
         }
 
     }
+
+    
     
     
 }

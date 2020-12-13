@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2020 at 09:25 AM
+-- Generation Time: Dec 13, 2020 at 08:20 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.26
 
@@ -51,9 +51,8 @@ CREATE TABLE `books_details` (
 --
 
 INSERT INTO `books_details` (`id`, `ISBN`, `title`, `subject`, `bookImg`, `publisher`, `language`, `price`, `author`, `numOfPages`, `purchaseDate`, `publicationDate`, `quantity`, `available`, `librarian`) VALUES
-(18, '201343', 'Meendum Jeeno', 'Story book', 'book_images/fe8796d482b57db79e071ea276eea6ecmeendum jeeno.jpg', 'Iyan story industry', 'Tamil', '240', 'Sujatha', '200', '07-05-2020', '06-12-1980', '20', '19', '180476L'),
-(20, '55', 'Computer kiramam', 'Novel', 'book_images/99af9b899fe1764c01b0b455e35f03e953d345282593dc27d03a8222d41fa144s-l1600.jpg', 'asdfa', 'Tamil', '2334', 'Sujatha', '233', '1212312', '123123', '111', '111', 'ps'),
-(126, 'asfd', 'sadfsd', 'asdf', 'book_images/f89f88e5f2e7f9949ca2f0e1c146a6d41.jpg', 'f', 'asd', 'fa', 'sdfa', 'sd', 'af', 'sd', 'f', 'asdfasdf', '180476L'),
+(18, '201343', 'Meendum Jeeno', 'Story book', 'book_images/fe8796d482b57db79e071ea276eea6ecmeendum jeeno.jpg', 'Iyan story industry', 'Tamil', '240', 'Sujatha', '200', '07-05-2020', '06-12-1980', '20', '17', '180476L'),
+(20, '55', 'Computer kiramam', 'Novel', 'book_images/99af9b899fe1764c01b0b455e35f03e953d345282593dc27d03a8222d41fa144s-l1600.jpg', 'asdfa', 'Tamil', '2334', 'Sujatha', '233', '1212312', '123123', '111', '110', 'ps'),
 (127, '234234', 'Harry Potter 2', 'Novel', 'book_images/88ef1a7a649d147c7859746e40068d5aeb7dae24cc8803aa92fc7154e2e3a6f1en_iniya_iyanthira.jpg', 'Hari', 'English', '2401', 'KARTHICK S. KARTHICK S.', '233', '20-10-2020', '20-10-2016', '100', '100', '180476L');
 
 -- --------------------------------------------------------
@@ -121,7 +120,10 @@ INSERT INTO `borrowed_books` (`id`, `book_id`, `user_id`, `borrowed_date`, `due_
 (48, '3', '12', '1601880065', '1602484865', 'Yes'),
 (50, '18', '12', '1607808906', '1608413706', 'Yes'),
 (51, '18', '12', '1607809477', '1608414277', 'Yes'),
-(52, '18', '12', '1607847834', '1608452634', 'No');
+(52, '18', '12', '1607847834', '1608452634', 'No'),
+(53, '18', '16', '1607883983', '1608488783', 'No'),
+(54, '18', '16', '1607884113', '1608488913', 'No'),
+(55, '20', '16', '1607884125', '1608488925', 'No');
 
 -- --------------------------------------------------------
 
@@ -195,9 +197,9 @@ CREATE TABLE `requested_books` (
 --
 
 INSERT INTO `requested_books` (`id`, `book_id`, `user_id`, `requested_time`, `isIssued`) VALUES
-(28, '18', '12', '1601782099', 'Yes'),
-(29, '18', '12', '1601782589', 'Yes'),
-(30, '3', '12', '1601879914', 'Yes');
+(66, '18', '16', '1607869134', 'Yes'),
+(67, '20', '16', '1607869138', 'Yes'),
+(68, '127', '16', '1607869141', 'No');
 
 -- --------------------------------------------------------
 
@@ -207,11 +209,9 @@ INSERT INTO `requested_books` (`id`, `book_id`, `user_id`, `requested_time`, `is
 
 CREATE TABLE `student_info` (
   `id` int(5) NOT NULL,
-  `regis_num` varchar(50) NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `grade` varchar(6) NOT NULL,
   `address` varchar(255) NOT NULL,
   `email` varchar(500) NOT NULL,
   `nic` varchar(20) NOT NULL,
@@ -223,13 +223,12 @@ CREATE TABLE `student_info` (
 -- Dumping data for table `student_info`
 --
 
-INSERT INTO `student_info` (`id`, `regis_num`, `firstname`, `lastname`, `username`, `grade`, `address`, `email`, `nic`, `password`, `active`) VALUES
-(1, '180476V', 'Piraveen ', 'Sivakumar ', '180476L', '10', 'Jaffna', 'Veensiva10@gmail.com', '2343', '1234', 'No'),
-(2, '180596E', 'Shanmugabavan', 'Shanmugakumar', 'Shanmu', '12', 'Inuvil West, Inuvil', 'shanmugabavan25621@gmail.com', '180596E', 'Shanmu@25621', 'No'),
-(7, '234', 'hari', 'Sivakumar ', '170288D', '11', 'senior lane, Jaffna', 'piraveensivakumar998@gmail.com', '115', '1234', 'Yes'),
-(10, '1805', 'asdsa', 'asdasda', 'asda', '11', 'asda', 'shanmugabavan25621@gmail.com', 'asdas', '111', 'Yes'),
-(12, '180476V', 'piraveennkk', 'sivakumar', 'ps', '111', '730,K.K.S road', 'veenindustry@gmail.com', '23232', '1234', 'Yes'),
-(14, '1118881', 'Piraveen', 'Sivakumar', 'sdfasdfasdfas', '11', 'No 600 K.k.s Road', 'veensiva10@gmail.com', '982831660V', '$2y$10$POXomjxyqilKpltiARGH2u/c35eDxGeNIgL9ZFIvqq5oPln52AB0.', 'Yes');
+INSERT INTO `student_info` (`id`, `firstname`, `lastname`, `username`, `address`, `email`, `nic`, `password`, `active`) VALUES
+(1, 'Thirumagal', 'thiruchchitamapalam', '180476L', 'nallur', 'Veensiva10@gmail.com', '', '1234', 'Yes'),
+(2, 'Shanmugabavan', 'Shanmugakumar', 'Shanmu', 'Inuvil West, Inuvil', 'shanmugabavan25621@gmail.com', '180596E', 'Shanmu@25621', 'Yes'),
+(7, 'hari', 'Sivakumar ', '170288D', 'senior lane, Jaffna', 'piraveensivakumar998@gmail.com', '115', '1234', 'Yes'),
+(12, 'piraveennkk', 'sivakumar', 'ps', '730,K.K.S road', 'veenindustry@gmail.com', '23232', '1234', 'Yes'),
+(16, 'Piraveen', 'Sivakumar', '180725c', 'No 600 K.k.s Road', 'veensiva1@gmail.com', '982831660V', '$2y$10$GFDEfzXi/06roR0JL.iFrOdHLD26WszsdkhowrFn4tydYsT.LczZG', 'No');
 
 -- --------------------------------------------------------
 
@@ -311,7 +310,7 @@ ALTER TABLE `books_details`
 -- AUTO_INCREMENT for table `borrowed_books`
 --
 ALTER TABLE `borrowed_books`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `librarian`
@@ -329,13 +328,13 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `requested_books`
 --
 ALTER TABLE `requested_books`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `student_info`
 --
 ALTER TABLE `student_info`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`

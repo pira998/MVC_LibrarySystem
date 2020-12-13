@@ -122,9 +122,9 @@ require APPROOT . '/views/includes/header.php';
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>Id</th>
-                                    <th>Regis_Num</th>
+                                    
                                     <th>Username</th>
-                                    <th>Grade</th>
+                                    
                                     <th>Email</th>
                                     <th>Status</th>
                                     <th>Edit</th>
@@ -137,9 +137,9 @@ require APPROOT . '/views/includes/header.php';
                                     <tr>
                                        
                                             <td><?php echo $student->id; ?></td>
-                                            <td><?php echo $student->regis_num; ?></td>
+                                        
                                             <td id="username"><?php echo $student->username; ?></td>
-                                            <td><?php echo $student->grade; ?></td>
+                                          
                                             <td><?php echo $student->email; ?></td>
                                             <td><?php echo $student->active; ?></td>
                                             <td><a href="/librarian/students/update/<?php echo $student->id; ?>"><button class="btn btn-info">Edit</button></a>

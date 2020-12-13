@@ -12,7 +12,7 @@
     <div class="wrapper-login">
         <h2>Student Sign in</h2>
 
-        <form action="/student/users/login" method ="POST">
+        <form action="/student/profile/login" method ="POST">
             <input type="text" placeholder="Username *" name="username">
             <span class="invalidFeedback">
                 <?php echo $data['usernameError']; ?>

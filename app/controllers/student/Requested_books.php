@@ -1,17 +1,37 @@
 <?php
 class Requested_books extends Controller {
     public function __construct() {
-        //$this->userModel = $this->model('User');
+        $this->requestBookModel = $this->model('RequestBook');
     }
 
     public function index() {
+        $requestedBooks = $this->requestBookModel-> findAllRequestedBooks(); 
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'requestedBooks' => $requestedBooks,
         ];
 
         $this->view('student/requested_books/index', $data);
     }
    
 
-    
+    public function request($id){
+
+        $data = [
+            'book_id' => $id,
+            'user_id' => $_SESSION['user_id'],
+            'requested_time'=> time(),
+        ];
+
+        $this->requestBookModel->request($data);
+       header('location: ' . URLROOT . '/student/requested_books/index');
+        
+
+
+    }
+
+    public function cancel($id){
+        $this->requestBookModel->cancel($id);
+        $this->index();
+    }
 }

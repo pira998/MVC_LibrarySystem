@@ -9,8 +9,6 @@ class Librarian {
         $this->db->query('SELECT * FROM librarian WHERE id= :id');
         $this->db->bind(':id', $id);
 
-        $this->db->bind(':id', $id);
-
         $row = $this->db->single();
 
         return $row;

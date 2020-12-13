@@ -15,28 +15,20 @@
             <form
                 id="register-form"
                 method="POST"
-                action="/student/users/register"
+                action="/student/profile/register"
                 >
             <input type="text" placeholder="Username *" name="username">
             <span class="invalidFeedback">
                 <?php echo $data['usernameError']; ?>
             </span>
-            <input type="text" placeholder="Register No *" name="nic">
-            <span class="invalidFeedback">
-                <?php echo $data['usernameError']; ?>
-            </span>
+            <input type="text" placeholder="Nic No *" name="nic">
+            
             <input type="text" placeholder="First Name *" name="firstname">
-            <span class="invalidFeedback">
-                <?php echo $data['usernameError']; ?>
-            </span>
+            
             <input type="text" placeholder="Last Name *" name="lastname">
-            <span class="invalidFeedback">
-                <?php echo $data['usernameError']; ?>
-            </span>
-            <input type="text" placeholder="Username *" name="username">
-            <span class="invalidFeedback">
-                <?php echo $data['usernameError']; ?>
-            </span>
+          
+            <input type="text" placeholder="Address *" name="address">
+           
 
             <input type="email" placeholder="Email *" name="email">
             <span class="invalidFeedback">

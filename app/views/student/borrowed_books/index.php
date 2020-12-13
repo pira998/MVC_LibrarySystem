@@ -17,7 +17,7 @@ require APPROOT . '/views/includes/student_header.php';
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title ">Book </h4>
+                                <h4 class="card-title ">Borrowed Book </h4>
                                 <p class="card-category"> Info </p>
                             </div>
 
@@ -30,23 +30,18 @@ require APPROOT . '/views/includes/student_header.php';
                                         <th>Due_date</th>
                                         </thead>
                                         <tbody>
+                                       
 
                                         <tr>
-                                            <?php while ($m = mysqli_fetch_array($array)) :
-                                            $sql_for_get = "SELECT * FROM `books_details` WHERE id = '$m[book_id]'";
-                                            $array = mysqli_query($connection, $sql_for_get);
-                                            $sql_for_book = mysqli_fetch_array($array);
+                                        <?php foreach ($data['borrowedBooks'] as $borrowedBook): ?>
+                                            <td><?php echo  $borrowedBook->book_id; ?></td>
+                                            <td><?php echo date('d/m/Y', $borrowedBook->borrowed_date); ?></td>
+                                            <td><?php echo date('d/m/Y', $borrowedBook->due_date); ?></td>
 
-                                            ?>
-
-                                            <td><?php echo  $sql_for_book['title'] ?></td>
-                                            <td><?php echo date('d/m/Y', $m[3]) ?></td>
-                                            <td><?php echo date('d/m/Y', $m[4]) ?></td>
-
-                                            </td>
+                                            
 
                                         </tr>
-                                        <?php endwhile; ?>
+                                        <?php endforeach ?>
 
 
                                         </tbody>

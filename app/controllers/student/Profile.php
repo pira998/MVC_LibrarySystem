@@ -11,7 +11,7 @@ class Profile extends Controller {
             'info' => $info,
         ];
 
-        $this->view('librarian/profile/index', $data);
+        $this->view('student/profile/index', $data);
     }
 
     public function register() {
@@ -59,6 +59,10 @@ class Profile extends Controller {
             } elseif (!preg_match($nameValidation, $data['username'])) {
                 $data['usernameError'] = 'Name can only contain letters and numbers.';
             }
+            if ($this->studentModel->findUserByUsername($data['username'])) {
+            $data['usernameError'] = 'username is already taken.';
+            
+            }
 
             //Validate email
             if (empty($data['email'])) {
@@ -67,7 +71,7 @@ class Profile extends Controller {
                 $data['emailError'] = 'Please enter the correct format.';
             } else {
                 //Check if email exists.
-                if ($this->userModel->findUserByEmail($data['email'])) {
+                if ($this->studentModel->findUserByEmail($data['email'])) {
                 $data['emailError'] = 'Email is already taken.';
                 }
             }
@@ -97,9 +101,9 @@ class Profile extends Controller {
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
                 //Register user from model function
-                if ($this->userModel->register($data)) {
+                if ($this->studentModel->register($data)) {
                     //Redirect to the login page
-                    header('location: ' . URLROOT . '/users/login');
+                    header('location: ' . URLROOT . '/student/profile/login');
                 } else {
                     die('Something went wrong.');
                 }
@@ -141,7 +145,7 @@ class Profile extends Controller {
 
             //Check if all errors are empty
             if (empty($data['usernameError']) && empty($data['passwordError'])) {
-                $loggedInUser = $this->userModel->login($data['username'], $data['password']);
+                $loggedInUser = $this->studentModel->login($data['username'], $data['password']);
 
                 if ($loggedInUser) {
                     $this->createUserSession($loggedInUser);
@@ -167,19 +171,19 @@ class Profile extends Controller {
         $_SESSION['user_id'] = $user->id;
         $_SESSION['username'] = $user->username;
         $_SESSION['email'] = $user->email;
-        
-        header('location:' . URLROOT . '/librarian/pages/index');
+        $_SESSION['role'] = "student";
+        header('location:' . URLROOT . '/student/index');
     }
 
     public function logout() {
         unset($_SESSION['user_id']);
         unset($_SESSION['username']);
         unset($_SESSION['email']);
-        header('location:' . URLROOT . '/student/users/login');
+        header('location:' . URLROOT . '/student/profile/login');
     }
     public function update($id){
 
-        $info = $this->librarianModel->getInfo($id);
+        $info = $this->studentModel->getInfo($id);
 
         $data = [
             'info' => $info,
@@ -188,8 +192,7 @@ class Profile extends Controller {
             'lastname'=> '',
             'username'=> '',
             'email'=> '',
-            'nic'=> '',
-            'date'=> '',
+           
             'address'=> '',
         
         ];
@@ -202,17 +205,15 @@ class Profile extends Controller {
                 'info' => $info,
                 'firstname'=> ($_POST["firstname"]),
                 'lastname'=> ($_POST["lastname"]),
-                
                 'email'=> ($_POST["email"]),
-                
-                'date'=> ($_POST["date"]),
                 'address'=> ($_POST["address"]),
+               
                 
                 
             ];
 
            
-            if ($this->librarianModel->updateProfile($data)) {
+            if ($this->studentModel->updateProfile($data)) {
                     $this->index($id);
             } else {
                 die("Something went wrong, please try again!");

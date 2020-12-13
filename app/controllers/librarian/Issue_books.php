@@ -2,7 +2,7 @@
 class Issue_Books extends Controller {
     public function __construct() {
         $this->issueBookModel = $this->model('IssueBook');
-        $this->bookModel = $this->model('Book');
+        
     }
 
     public function index() {
@@ -38,8 +38,7 @@ class Issue_Books extends Controller {
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $created_time = time();
-            $due_time =$created_time+ (7 * 24 * 60 * 60); 
+       
             $data = [
                 'id' => '',
                 'book_id' => trim($_POST['book_id']),
@@ -54,6 +53,7 @@ class Issue_Books extends Controller {
 
             
             if ($this->issueBookModel->issueBook($data)) {
+                    $this->bookModel = $this->model('Book');
                     $this->bookModel->reduceCount($data['book_id']);
                     $this->index();
                 } else {
@@ -63,7 +63,7 @@ class Issue_Books extends Controller {
         }
         
     }
-    
+
 
     
 }

@@ -1,12 +1,14 @@
 <?php
 class Messages extends Controller {
     public function __construct() {
-        //$this->userModel = $this->model('User');
+        $this->messageModel = $this->model('Message');
     }
 
     public function index() {
+        $messages = $this->messageModel->findAllMessages();
         $data = [
-            'title' => 'Home page'
+            'title' => 'Message page',
+            'messages' => $messages
         ];
 
         $this->view('student/messages/index', $data);

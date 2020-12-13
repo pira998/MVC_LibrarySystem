@@ -5,7 +5,7 @@ class IssueBook {
         $this->db = new Database;
     }
     public function findAllNotReturnBooks(){
-        $this->db->query('SELECT * FROM borrowed_books WHERE isReturned = :isReturned');
+        $this->db->query('SELECT * FROM borrowed_books WHERE isReturned = :isReturned ORDER BY borrowed_date DESC' );
 
         $this->db->bind(':isReturned',"No");
 
@@ -68,6 +68,17 @@ class IssueBook {
 
         return $row;
 
+    }
+    public function findAllBorrowedBooksByStudentId($id){
+        
+        $this->db->query('SELECT * FROM borrowed_books WHERE user_id= :id');
+        
+
+        $this->db->bind(':id', $id);
+
+        $results = $this->db->resultSet();
+
+        return $results;
     }
 
 }

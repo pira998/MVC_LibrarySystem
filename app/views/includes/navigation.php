@@ -3,18 +3,14 @@
         <li>
             <a href="/index">Home</a>
         </li>
+        
         <li>
-            <a href="/about">About</a>
+            <a href="/pages/books">Books</a>
         </li>
         <li>
-            <a href="/projects">Projects</a>
+            <a href="/pages/about">About</a>
         </li>
-        <li>
-            <a href="/posts">Blog</a>
-        </li>
-        <li>
-            <a href="/contact">Contact</a>
-        </li>
+        
         <li class="btn-login">
 
                 <a href="/student/profile/login">Student</a>

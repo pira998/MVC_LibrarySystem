@@ -1,6 +1,7 @@
 <?php
 require APPROOT . '/views/includes/header.php';
 $librarian = $data['info'];
+
 ?>
 <div class="content">
     <div class="container-fluid">

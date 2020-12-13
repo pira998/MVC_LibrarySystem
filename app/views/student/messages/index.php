@@ -5,7 +5,7 @@ require APPROOT . '/views/includes/student_header.php';
 
 <div class="content">
     <div class="container-fluid">
-        <form method="post">
+        <form method="post" action="/student/messages">
             <input type="submit" class="btn btn-primary btn-round" name="refresh" value="Refresh">
 
             </input>
@@ -13,22 +13,12 @@ require APPROOT . '/views/includes/student_header.php';
 
 
 
-
-        <?php
-
-        $query = "";
-        if (isset($_POST['refresh'])) {
-
-            $query =  $student->receiveMessage();
-        }
-        ?>
-
         <table class="table table-inbox table-hover">
             <tbody>
 
 
                 <?php
-                while ($message=mysqli_fetch_array($query)) {
+                    foreach($data['messages'] as $message):
                 ?>
 
                     <tr class="unread">
@@ -36,11 +26,11 @@ require APPROOT . '/views/includes/student_header.php';
                             <input type="checkbox" class="mail-checkbox">
                         </td>
                         <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-                        <td class="view-message  dont-show"><?php echo $message['subject'] ?></td>
-                        <td class="view-message "><?php echo $message['body'] ?></td>
-                        <td class="view-message "><?php echo date('d/m/Y', $message['created_time']) ?></td>
+                        <td class="view-message  dont-show"><?php echo $message->subject ?></td>
+                        <td class="view-message "><?php echo $message->body ?></td>
+                        <td class="view-message "><?php echo date('d/m/Y', $message->created_time) ?></td>
                     </tr>
-                <?php } ?>
+                <?php endforeach ?>
 
                 <br>
             </tbody>
