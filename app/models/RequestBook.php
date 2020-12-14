@@ -3,10 +3,22 @@ class RequestBook {
     private $db;
     public function __construct() {
         $this->db = new Database;
+    
     }
     public function findAllRequestedBooks(){
         $this->db->query('SELECT * FROM requested_books WHERE isIssued = :isIssued');
 
+        
+        $this->db->bind(':isIssued',"No");
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+    public function findAllRequestedBooksByStudentId($id){
+        $this->db->query('SELECT * FROM requested_books WHERE isIssued = :isIssued AND user_id=:id');
+
+        $this->db->bind(':id',$id);
         $this->db->bind(':isIssued',"No");
 
         $results = $this->db->resultSet();

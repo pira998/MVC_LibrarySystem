@@ -20,6 +20,8 @@ class Issue_Books extends Controller {
 
         $issuedBook = $this->issueBookModel->getBookId($id);
 
+        $this->bookModel = $this->model('Book');
+
         $this->bookModel->increaseCount($issuedBook->book_id);
         
         $this->index();

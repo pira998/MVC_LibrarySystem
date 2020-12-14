@@ -4,7 +4,7 @@ class Book {
     public function __construct() {
         $this->db = new Database;
     }
-
+  
     public function getInfo($id){
         $this->db->query('SELECT * FROM books_details WHERE id= :id');
         $this->db->bind(':id', $id);
@@ -117,6 +117,9 @@ class Book {
         } else {
             return false;
         }
+
+    }
+    public function totalCount(){
 
     }
 

@@ -63,14 +63,14 @@ class Student {
 
 
     public function addStudent($data) {
-        $this->db->query('INSERT INTO student_info (id, regis_num, firstname, lastname, username, grade, address, email, nic, password,active) VALUES (:id,:regis_num,:firstname,:lastname,:username,:grade,:address,:email,:nic,:password,:active)');
+        $this->db->query('INSERT INTO student_info (id, firstname, lastname, username, address, email, nic, password,active) VALUES (:id,:firstname,:lastname,:username,:address,:email,:nic,:password,:active)');
 
         $this->db->bind(':id', '');
-        $this->db->bind(':regis_num', $data['regis_num']);
+     
         $this->db->bind(':firstname', $data['firstname']);
         $this->db->bind(':lastname', $data['lastname']);
         $this->db->bind(':username', $data['username']);
-        $this->db->bind(':grade', $data['grade']);
+
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':nic', $data['nic']);

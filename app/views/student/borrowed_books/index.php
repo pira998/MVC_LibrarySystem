@@ -25,7 +25,7 @@ require APPROOT . '/views/includes/student_header.php';
                                 <div class="table-responsive">
                                     <table class="table" id="myTable">
                                         <thead class=" text-primary">
-                                        <th>Book_name</th>
+                                        <th>Book_Id</th>
                                         <th>Borrowed_date</th>
                                         <th>Due_date</th>
                                         </thead>

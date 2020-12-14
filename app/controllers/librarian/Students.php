@@ -38,11 +38,11 @@ class Students extends Controller {
 
             $data = [
                 'id' => '',
-                'regis_num' => trim($_POST['regis_num']),
+               
                 'firstname' => trim($_POST['firstname']),
                 'lastname' => trim($_POST['lastname']),
                 'username' => trim($_POST['username']),
-                'grade' => trim($_POST['grade']),
+                
                 'address' => trim($_POST['address']),
                 'email' => trim($_POST['email']),
                 'nic' => trim($_POST['nic']),

@@ -2,7 +2,7 @@
   /*
    * App Core Class
    * Creates URL & loads core controller
-   * URL FORMAT - /controller/method/params
+   * URL FORMAT - Folder/controller/method/params
    */
   class Core {
     protected $currentFolder = '/';
@@ -15,15 +15,18 @@
 
       $url = $this->getUrl();
       
-      
+      // url ---- student/profile/index
+      //[student,profile,index]
       // Look in BLL for first value
       if($url[0]== 'student'){
         unset($url[0]);
+        //[null,profile,index]
         if(file_exists('../app/controllers/student/' . ucwords($url[1]). '.php')){
         // If exists, set as controller
         $this->currentController = ucwords($url[1]);
         // Unset 0 Index
         unset($url[1]);
+        //[null,null,index]
         
       }
 

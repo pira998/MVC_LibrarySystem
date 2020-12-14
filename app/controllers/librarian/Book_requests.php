@@ -37,4 +37,8 @@ class Book_requests extends Controller {
                     die("Something went wrong, please try again!");
                 }
     }
+    public function cancel($id){
+     $this->requestBookModel->cancel($id);
+        $this->index();   
+    }
 }

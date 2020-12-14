@@ -111,6 +111,11 @@ require APPROOT . '/views/includes/header.php';
 
         </center>
         <div class="row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Search Student" id="Search_Student" name="Search_Student" onkeyup="myFunction(0,'Search_Student')">
+                    </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
@@ -119,12 +124,10 @@ require APPROOT . '/views/includes/header.php';
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="myTable">
                                 <thead class=" text-primary">
+                                    <th>Username</th>    
                                     <th>Id</th>
-                                    
-                                    <th>Username</th>
-                                    
                                     <th>Email</th>
                                     <th>Status</th>
                                     <th>Edit</th>
@@ -133,12 +136,12 @@ require APPROOT . '/views/includes/header.php';
                                     <th>Delete</th>
                                 </thead>
                                 <tbody>
-                                      <?php foreach($data['students'] as $student): ?>
                                     <tr>
-                                       
+                                      <?php foreach($data['students'] as $student): ?>
+                                             <td id="username"><?php echo $student->username; ?></td>
                                             <td><?php echo $student->id; ?></td>
                                         
-                                            <td id="username"><?php echo $student->username; ?></td>
+                                           
                                           
                                             <td><?php echo $student->email; ?></td>
                                             <td><?php echo $student->active; ?></td>
@@ -151,8 +154,8 @@ require APPROOT . '/views/includes/header.php';
                                             </td>
                                             <td><a href="/librarian/students/delete/<?php echo $student->id ?>"><button class="btn btn-danger">Delete</button></a>
                                             </td>
-                                        <?php endforeach; ?>
                                     </tr>
+                                        <?php endforeach; ?>
 
 
                                    
@@ -168,13 +171,29 @@ require APPROOT . '/views/includes/header.php';
             </div>
 
 
-            <?php
-            if (isset($_POST['create'])) {
+          <script>
+        function myFunction(number,myInput) {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById(myInput);
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
 
-                // $new_student = new Student($_POST);
-
-                // $sql = $new_student->createStudent($connection, $_POST);
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[number];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
             }
+        }
+    </script>
 
-
+<?php 
 require APPROOT . '/views/includes/footer.php';

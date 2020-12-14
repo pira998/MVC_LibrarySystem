@@ -62,6 +62,7 @@ class Books extends Controller {
             move_uploaded_file($_FILES['bb']['tmp_name'], $dst);
 
             $data['bookImg'] = $dst1;
+            
             if ($this->bookModel->addBook($data)) {
                     $this->index();
                 } else {

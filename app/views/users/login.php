@@ -10,8 +10,8 @@
 
 <div class="container-login">
     <div class="wrapper-login">
-        <h2>Student Sign in</h2>
-
+        <h1>Student Sign in</h1>
+      
         <form action="/student/profile/login" method ="POST">
             <input type="text" placeholder="Username *" name="username">
             <span class="invalidFeedback">

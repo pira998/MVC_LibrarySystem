@@ -21,6 +21,7 @@ require APPROOT . '/views/includes/header.php';
                                     <th>Book Name</th>
                                     <th>Requested date</th>
                                     <th>Issue</th>
+                                    <th>Cancel</th>
 
                                 </thead>
                                 <tbody>
@@ -40,6 +41,8 @@ require APPROOT . '/views/includes/header.php';
 
                                                 </form>
                                             </td>
+                                            <td><a href="/librarian/book_requests/cancel/<?php echo $request->id; ?>"><button class="btn btn-danger">Cancel</button></a>
+
 
                                     </tr>
                                 <?php endforeach ?>

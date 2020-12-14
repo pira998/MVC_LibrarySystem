@@ -10,7 +10,7 @@
 
 <div class="container-login">
     <div class="wrapper-login">
-        <h2>Librarian Register</h2>
+        <h1>Librarian Register</h1>
 
             <form
                 id="register-form"
@@ -48,7 +48,7 @@
 
             <button id="submit" type="submit" value="submit">Submit</button>
 
-            <p class="options">Already have account? <a href="/librarian/profile/librarian_register">Sign in!</a></p>
+            <p class="options">Already have account? <a href="/librarian/profile/librarian_login">Sign in!</a></p>
         </form>
     </div>
 </div>

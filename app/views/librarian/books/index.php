@@ -30,6 +30,7 @@ require APPROOT . '/views/includes/header.php';
                                         <input type="text" class="form-control" placeholder="ISBN" name="ISBN" required="">
                                     </div>
                                 </div>
+                                
                                 <div class="form-group bmd-form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -156,7 +157,6 @@ require APPROOT . '/views/includes/header.php';
         </div>
 
     </center>
-
 
 
 

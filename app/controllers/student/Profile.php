@@ -4,6 +4,8 @@ class Profile extends Controller {
         $this->studentModel = $this->model('Student');
     }
 
+    // student(controller)/profile(file)/index(method)/14(params)
+    //public function index(14){}
     public function index($id) {
         $info = $this->studentModel->getInfo($id);
         $data = [

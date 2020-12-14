@@ -10,7 +10,7 @@
 
 <div class="container-login">
     <div class="wrapper-login">
-        <h2>Student Register</h2>
+        <h1>Student Register</h1>
 
             <form
                 id="register-form"

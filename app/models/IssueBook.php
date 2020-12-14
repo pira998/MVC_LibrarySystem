@@ -13,6 +13,15 @@ class IssueBook {
 
         return $results;
     }
+    public function findAllReturnedBooks(){
+        $this->db->query('SELECT * FROM borrowed_books WHERE isReturned = :isReturned ORDER BY borrowed_date DESC' );
+
+        $this->db->bind(':isReturned',"Yes");
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
     public function returnBook($id){
         $this->db->query('UPDATE borrowed_books SET isReturned=:isReturned WHERE id=:id' );
         
@@ -80,5 +89,28 @@ class IssueBook {
 
         return $results;
     }
+     public function findCountBorrowedBooksByStudentId($id){
+        
+        $this->db->query('SELECT * FROM borrowed_books WHERE user_id= :id');
+        
+
+        $this->db->bind(':id', $id);
+
+        $results = $this->db->rowCount();
+
+        return $results;
+    }
+    public function findCountNotReturnedBooksByStudentId($id){
+        
+        $this->db->query('SELECT * FROM borrowed_books WHERE user_id= :id AND isReturned= :isReturned');
+        
+
+        $this->db->bind(':id', $id);
+        $this->db->bind(':isReturned', "No");
+        $results = $this->db->rowCount();
+
+        return $results;
+    }
+
 
 }

@@ -29,6 +29,7 @@
         }
 
         //Bind values
+        // bind(':id',$id)
         public function bind($parameter, $value, $type = null) {
             switch (is_null($type)) {
                 case is_int($value):

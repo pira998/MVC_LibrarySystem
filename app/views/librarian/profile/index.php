@@ -66,7 +66,7 @@ $librarian = $data['info'];
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Joined date</label>
-                                        <input type="text" class="form-control" name="date" value="<?php echo $librarian->date ?>">
+                                        <input type="text" class="form-control" name="date" value="<?php echo date('d/m/Y',$librarian->date); ?>" disabled>
                                     </div>
                                 </div>
                             </div>

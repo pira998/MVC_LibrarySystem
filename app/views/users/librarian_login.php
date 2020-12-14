@@ -10,7 +10,7 @@
 
 <div class="container-login">
     <div class="wrapper-login">
-        <h2>Librarian Sign in</h2>
+        <h1>Librarian Sign in</h1>
 
         <form action="/librarian/profile/librarian_login" method ="POST">
             <input type="text" placeholder="Username *" name="username">

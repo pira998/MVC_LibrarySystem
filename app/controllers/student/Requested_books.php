@@ -5,7 +5,13 @@ class Requested_books extends Controller {
     }
 
     public function index() {
-        $requestedBooks = $this->requestBookModel-> findAllRequestedBooks(); 
+         $data = [
+            
+            'user_id' => $_SESSION['user_id'],
+         
+        ];
+
+        $requestedBooks = $this->requestBookModel-> findAllRequestedBooksByStudentId($data['user_id']); 
         $data = [
             'title' => 'Home page',
             'requestedBooks' => $requestedBooks,
