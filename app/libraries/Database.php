@@ -8,8 +8,9 @@
         private $statement;
         private $dbHandler;
         private $error;
+        private static $db = null;
 
-        public function __construct() {
+        private function __construct() {
             $conn = 'mysql:host=' . $this->dbHost . ';dbname=' . $this->dbName;
             $options = array(
                 PDO::ATTR_PERSISTENT => true,
@@ -23,6 +24,15 @@
             }
         }
 
+        public static function getInstance()
+  {
+            if (self::$db== null)
+            {
+                self::$db = new Database();
+            }
+        
+            return self::$db;
+  }
         //Allows us to write queries
         public function query($sql) {
             $this->statement = $this->dbHandler->prepare($sql);

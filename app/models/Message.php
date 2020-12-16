@@ -2,7 +2,7 @@
 class Message {
     private $db;
     public function __construct() {
-        $this->db = new Database;
+        $this->db = Database::getInstance();
     }
     public function findAllMessages(){
         $this->db->query('SELECT * FROM messages ORDER BY created_time DESC');

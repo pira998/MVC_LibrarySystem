@@ -2,7 +2,7 @@
 class IssueBook {
     private $db;
     public function __construct() {
-        $this->db = new Database;
+        $this->db = Database::getInstance();
     }
     public function findAllNotReturnBooks(){
         $this->db->query('SELECT * FROM borrowed_books WHERE isReturned = :isReturned ORDER BY borrowed_date DESC' );

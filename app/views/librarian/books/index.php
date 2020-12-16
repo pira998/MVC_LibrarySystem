@@ -12,7 +12,7 @@ require APPROOT . '/views/includes/header.php';
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add student</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add Book</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -187,7 +187,7 @@ require APPROOT . '/views/includes/header.php';
                         <div class="mc-content">
                             <div class="img-container">
                                 <img class="img-fluid"" src="/public/assets/img/<?php echo $book->bookImg ?>"> </div> <div class="mc-description">
-                                Book Quantity: <?php echo $book->available ?><br> Book Available:<?php echo $book->available ?><br> No of Reservation: 91<br>
+                                Book Quantity: <?php echo $book->quantity; ?><br> Book Available:<?php echo $book->available ?>
                             </div>
                         </div>
                         <a class="mc-btn-action">
